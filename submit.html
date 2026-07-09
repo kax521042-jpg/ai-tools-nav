@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提交工具 — AI 工具导航</title>
+    <meta name="description" content="向 AI 工具导航提交你的 AI 工具，让更多人发现它。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif; }
+        .form-input:focus { box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 导航 -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <nav class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-800 no-underline">
+                <span class="text-2xl">🤖</span>
+                <span>AI 工具导航</span>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="/#tools" class="text-gray-600 hover:text-indigo-600 transition">工具列表</a>
+                <a href="/about.html" class="text-gray-600 hover:text-indigo-600 transition">关于</a>
+                <a href="/submit.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">提交工具</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 内容 -->
+    <main class="max-w-2xl mx-auto px-4 py-16">
+        <h1 class="text-3xl font-bold mb-4">📩 提交工具</h1>
+        <p class="text-gray-500 mb-10">
+            推荐你喜欢的 AI 工具，或推广你自己的产品。我们审核后会尽快收录。
+        </p>
+
+        <form id="submitForm" class="space-y-6">
+            <!-- 工具名称 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">工具名称 *</label>
+                <input type="text" required name="name"
+                class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                placeholder="例如：ChatGPT">
+            </div>
+
+            <!-- 官网链接 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">官网链接 *</label>
+                <input type="url" required name="url"
+                class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                placeholder="https://">
+            </div>
+
+            <!-- 分类 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">分类 *</label>
+                <select name="category" required
+                class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 bg-white">
+                <option value="">请选择分类</option>
+                <option value="writing">✍️ 写作</option>
+                <option value="image">🎨 图像</option>
+                <option value="video">🎬 视频</option>
+                <option value="audio">🎵 音频</option>
+                <option value="code">💻 代码</option>
+                <option value="design">🎯 设计</option>
+                <option value="productivity">⚡ 效率</option>
+                <option value="other">🔧 其他</option>
+            </select>
+        </div>
+
+        <!-- 简短描述 -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">简短描述 *</label>
+            <textarea name="desc" required rows="3"
+            class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+        placeholder="用一两句话描述这个工具的功能和亮点"></textarea>
+    </div>
+
+    <!-- 你的邮箱 -->
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">你的邮箱</label>
+        <input type="email" name="email"
+        class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+        placeholder="方便我们联系你（选填）">
+    </div>
+
+    <!-- 提交按钮 -->
+    <button type="submit"
+    class="w-full bg-indigo-600 text-white py-3 rounded-xl font-medium hover:bg-indigo-700 transition text-lg">
+    提交审核
+</button>
+
+<p class="text-sm text-gray-400 text-center mt-4">
+    提交即表示你同意我们的 <a href="/privacy.html" class="text-indigo-600 hover:underline">隐私政策</a>
+</p>
+</form>
+
+<!-- 提交成功提示 -->
+<div id="successMessage" class="hidden text-center py-16">
+    <span class="text-5xl block mb-4">✅</span>
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">提交成功！</h2>
+    <p class="text-gray-500">感谢你的推荐，我们会尽快审核并收录。</p>
+    <a href="/" class="inline-block mt-6 text-indigo-600 hover:underline">← 返回首页</a>
+</div>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-gray-400 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center text-sm">
+        <p>&copy; 2025 AI 工具导航. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const form = document.getElementById('submitForm');
+    const successMsg = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const body = Object.fromEntries(data.entries());
+
+        // 🔧 替换为你的 Web3Forms / Formspree 等表单服务 endpoint
+        // 推荐免费方案: https://web3forms.com/ 或 https://formspree.io/
+        const endpoint = 'https://api.web3forms.com/submit';
+        const accessKey = '你的-Web3Forms-Access-Key'; // ★ 替换为你的 key
+
+        try {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...body, access_key: accessKey })
+            });
+            if (res.ok) {
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+            } else {
+                alert('提交失败，请稍后重试或直接邮件联系我们。');
+            }
+        } catch {
+            alert('网络错误，请稍后重试。');
+        }
+    });
+</script>
+</body>
+</html>
