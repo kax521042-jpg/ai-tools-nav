@@ -1,0 +1,1324 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 工具导航 — 发现最好用的 AI 工具</title>
+    <meta name="description" content="AI 工具导航收录国内外最热门的 AI 工具，涵盖写作、绘图、视频、代码、音频等领域，帮你找到最合适的 AI 工具。">
+    <meta name="keywords" content="AI工具, ChatGPT, Midjourney, AI导航,人工智能工具">
+    <link rel="canonical" href="https://aitoolsnav.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI 工具导航 — 发现最好用的 AI 工具">
+    <meta property="og:description" content="收录国内外最热门的 AI 工具，涵盖写作、绘图、视频、代码、音频等领域。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsnav.com/">
+
+    <!-- Google AdSense → 替换为你的发布商 ID -->
+    <meta name="google-adsense-account" content="ca-pub-2277883357620791">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2277883357620791" crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AI 工具导航 - AI Tools Nav",
+        "url": "https://ai01.fun",
+        "description": "精选60款最实用的AI工具，涵盖写作、绘图、视频、代码、音频、设计、效率等类别，支持中英双语。"
+    }
+    </script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif; }
+        
+        /* 深色模式 */
+        :root {
+            --bg: #f9fafb; --card: #ffffff; --text: #1f2937; --text2: #6b7280;
+            --border: #f3f4f6; --hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --btn: #f3f4f6; --btn-hover: #e5e7eb; --primary: #4f46e5;
+        }
+        .dark {
+            --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --text2: #94a3b8;
+            --border: #334155; --hero: linear-gradient(135deg, #312e81 0%, #581c87 100%);
+            --btn: #334155; --btn-hover: #475569; --primary: #6366f1;
+        }
+        body { background: var(--bg); color: var(--text); transition: background 0.3s; }
+        .tool-card { background: var(--card); border-color: var(--border); transition: all 0.25s ease; }
+        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+        .category-tab { background: var(--card); border-color: var(--border); color: var(--text); }
+        .category-tab.active { background: #667eea; color: white; border-color: #667eea; }
+        .hero-gradient { background: var(--hero); }
+        .header-bg { background: rgba(255,255,255,0.8); }
+        .dark .header-bg { background: rgba(15,23,42,0.85); }
+        .dark .tool-card h3 { color: #e2e8f0; }
+        .dark .tool-card p { color: #94a3b8; }
+        .dark input { background: #1e293b; color: #e2e8f0; border-color: #334155; }
+        .dark #searchInput { background: #1e293b; color: #e2e8f0; }
+        .btn-fav { cursor: pointer; opacity: 0; transition: opacity 0.2s; }
+        .tool-card:hover .btn-fav { opacity: 1; }
+        .btn-fav.active { opacity: 1; }
+        .sort-btn { border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; background: var(--card); color: var(--text); }
+        .sort-btn.active { background: #667eea; color: white; border-color: #667eea; }
+        #back-to-top { opacity: 0; pointer-events: none; transition: opacity 0.3s; position: fixed; bottom: 1.5rem; right: 1.5rem; background: #4f46e5; color: white; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: none; cursor: pointer; font-size: 1.2rem; z-index: 40; }
+        #back-to-top.visible { opacity: 1; pointer-events: auto; }
+        #searchInput:focus { box-shadow: 0 0 0 3px rgba(99,102,241,0.3); }
+        #searchInput { background: var(--card); color: var(--text); }
+        .dark #searchInput:focus { box-shadow: 0 0 0 3px rgba(99,102,241,0.5); }
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- ==================== 顶部导航栏 ==================== -->
+    <header class="sticky top-0 z-50 header-bg backdrop-blur-md border-b border-gray-100 dark:border-gray-700">
+        <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 text-xl font-bold no-underline" style="color:var(--text)">
+                <span class="text-2xl">🤖</span>
+                <span id="siteName">AI 工具导航</span>
+            </a>
+            <div class="flex items-center gap-3 md:gap-4 text-sm">
+                <a href="#tools" class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition" data-i18n="navTools">工具列表</a>
+                <a href="/blog.html" class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition">📝 博客</a>
+                <a href="/submit.html" class="bg-indigo-600 text-white px-3 md:px-4 py-2 rounded-lg hover:bg-indigo-700 transition text-xs md:text-sm" data-i18n="navSubmit">提交工具</a>
+                <div class="relative hidden sm:block">
+                    <input id="searchInput" type="text" data-i18n="searchPlaceholder" placeholder="搜索..." class="w-32 md:w-48 px-3 py-1.5 rounded-lg border text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400" style="background:var(--card);color:var(--text);border-color:var(--border)" />
+                </div>
+                <button onclick="toggleDark()" class="text-lg px-1" title="深色模式">🌙</button>
+                <button id="langSwitch" onclick="toggleLang()" class="border border-gray-300 dark:border-gray-600 rounded-lg px-2 py-1.5 text-xs hover:bg-gray-100 dark:hover:bg-gray-700 transition font-medium" style="color:var(--text)">🌐 EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== Hero 区域 ==================== -->
+    <section class="hero-gradient text-white py-4">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-lg font-bold" data-i18n="heroTitle">
+                发现最好用的 <span class="text-yellow-300">AI 工具</span>
+            </h1>
+        </div>
+    </section>
+
+    <!-- ==================== AdSense 广告位 #1 (正文上方) ==================== -->
+    <div class="max-w-6xl mx-auto px-4 py-3">
+        <ins class="adsbygoogle"
+             style="display:block;text-align:center"
+             data-ad-client="ca-pub-2277883357620791"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- ==================== 分类标签 + 工具列表 ==================== -->
+    <section id="tools" class="max-w-6xl mx-auto px-4 pb-20">
+        <!-- 分类导航 -->
+        <div class="flex flex-wrap gap-2 md:gap-3 mb-8 justify-center" id="categoryTabs">
+            <button class="category-tab active px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="all" data-i18n="catAll">
+                🏠 全部
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="writing" data-i18n="catWriting">
+                ✍️ 写作
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="image" data-i18n="catImage">
+                🎨 图像
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="video" data-i18n="catVideo">
+                🎬 视频
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="audio" data-i18n="catAudio">
+                🎵 音频
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="code" data-i18n="catCode">
+                💻 代码
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="design" data-i18n="catDesign">
+                🎯 设计
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="productivity" data-i18n="catProductivity">
+                ⚡ 效率
+            </button>
+            <button class="category-tab px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-indigo-500 transition" data-category="community" data-i18n="catCommunity">
+                🌐 AI 社区
+            </button>
+        </div>    
+        <!-- 热门推荐 -->
+        <div class="mb-6" id="featuredStrip">
+            <p class="text-xs text-gray-400 mb-2 text-center">🔥 热门推荐</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="featuredGrid"></div>
+        </div>
+        <!-- 排序 + 收藏筛选 -->
+        <div class="flex flex-wrap gap-2 mb-6 justify-center items-center">
+            <span class="text-xs text-gray-400 mr-1">排序：</span>
+            <button class="sort-btn active" onclick="setSort('default')">默认</button>
+            <button class="sort-btn" onclick="setSort('name')">🔤 名称</button>
+            <button class="sort-btn" onclick="setSort('newest')">🆕 最新</button>
+            <button class="sort-btn" onclick="showFavorites()" id="favFilterBtn">⭐ 我的收藏 (<span id="favCount">0</span>)</button>
+        </div>
+
+        <!-- 工具卡片网格 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="toolGrid">
+            <!-- 工具由 JavaScript 动态渲染 -->
+        </div>
+
+        <!-- 无结果提示 -->
+        <div id="noResults" class="hidden text-center py-16 text-gray-400">
+            <span class="text-4xl block mb-3">😕</span>
+            <p class="text-lg" data-i18n="noResults">没有找到匹配的工具，换个关键词试试</p>
+        </div>
+    </section>
+
+    <!-- ==================== AdSense 广告位 #2 (底部) ==================== -->
+    <div class="max-w-6xl mx-auto px-4 pb-8 pt-4">
+        <ins class="adsbygoogle"
+             style="display:block;text-align:center"
+             data-ad-client="ca-pub-2277883357620791"
+             data-ad-slot="0987654321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="bg-gray-800 text-gray-400 py-10">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h4 class="text-white font-semibold mb-3">🤖 <span data-i18n="siteName">AI 工具导航</span></h4>
+                <p class="leading-relaxed" data-i18n="footerDesc">精选最实用的 AI 工具，帮你提升工作效率。本站部分链接为 affiliate 链接，你无需额外付费，我们会获得少量佣金。</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3" data-i18n="footerQuickLinks">快速链接</h4>
+                <ul class="space-y-2">
+                    <li><a href="/" class="hover:text-white transition" data-i18n="footerHome">首页</a></li>
+                    <li><a href="/about.html" class="hover:text-white transition" data-i18n="footerAbout">关于本站</a></li>
+                    <li><a href="/submit.html" class="hover:text-white transition" data-i18n="footerSubmit">提交工具</a></li>
+                    <li><a href="/privacy.html" class="hover:text-white transition" data-i18n="footerPrivacy">隐私政策</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3" data-i18n="footerMoneyTitle">赚钱说明</h4>
+                <ul class="space-y-2">
+                    <li data-i18n="footerMoney1">🔗 <strong>Affiliate</strong> — 通过推荐链接注册，我们获得佣金</li>
+                    <li data-i18n="footerMoney2">📢 <strong>广告</strong> — Google AdSense 展示广告</li>
+                    <li data-i18n="footerMoney3">💡 <strong>投稿</strong> — 工具方付费推广</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-6 border-t border-gray-700 text-center text-xs">
+            <p>&copy; 2025 AI 工具导航. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== 回到顶部按钮 ==================== -->
+    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white w-10 h-10 rounded-full shadow-lg hover:bg-indigo-700 transition text-lg">
+    ↑
+</button>
+
+<!-- ==================== JavaScript ==================== -->
+<script>
+    // ---- 工具数据 ----
+    // ★★★ 重要 ★★★
+    // 把下面的 affiliate 链接换成你的推广链接！
+    // 去各工具的官网注册 affiliate 计划，拿到专属链接后替换
+    const tools = [
+        // ---- ✍️ 写作 ----
+        {
+            id: 1,
+            name: 'ChatGPT',
+            desc: 'OpenAI 开发的对话式 AI，写作、翻译、编程、头脑风暴无所不能。',
+            category: 'writing',
+            url: 'https://chat.openai.com/',
+            affiliate: '',
+            badge: '🔥 热门'
+        },
+        {
+            id: 2,
+            name: 'Jasper AI',
+            desc: '专业营销文案生成器，支持 50+ 模板，适合博客、广告邮件、社交媒体。',
+            category: 'writing',
+            url: 'https://www.jasper.ai/',
+            affiliate: '',
+            badge: '💰 佣金高'
+        },
+        {
+            id: 3,
+            name: 'Claude',
+            desc: 'Anthropic 出品，长文本处理能力极强，适合报告、论文、分析。',
+            category: 'writing',
+            url: 'https://claude.ai/',
+            affiliate: 'https://claude.ai/',
+            badge: ''
+        },
+        {
+            id: 4,
+            name: 'Notion AI',
+            desc: 'Notion 内置 AI，写作、总结、润色，和文档管理无缝结合。',
+            category: 'writing',
+            url: 'https://www.notion.so/',
+            affiliate: '',
+            badge: ''
+        },
+        {
+            id: 5,
+            name: 'Writesonic',
+            desc: '多语言 AI 写作工具，支持 SEO 优化，适合内容创作者。',
+            category: 'writing',
+            url: 'https://writesonic.com/',
+            affiliate: '',
+            badge: '🆕 新工具'
+        },
+        {
+            id: 6,
+            name: 'Grammarly',
+            desc: 'AI 英文写作润色工具，实时检查语法、拼写、语气。',
+            category: 'writing',
+            url: 'https://www.grammarly.com/',
+            affiliate: 'https://grammarly.go2cloud.org/aff_c?offer_id=你的ID',
+            badge: ''
+        },
+        {
+            id: 7,
+            name: 'Rytr',
+            desc: '性价比高的 AI 写作助手，支持 30+ 语言，适合预算有限的个人。',
+            category: 'writing',
+            url: 'https://rytr.me/',
+            affiliate: '',
+            badge: '💸 便宜'
+        },
+        {
+            id: 8,
+            name: 'Copy.ai',
+            desc: '快速生成营销文案、产品描述、广告语，支持多种场景。',
+            category: 'writing',
+            url: 'https://www.copy.ai/',
+            affiliate: '',
+            badge: ''
+        },
+
+        // ---- 🎨 图像 ----
+        {
+            id: 9,
+            name: 'Midjourney',
+            desc: '顶级 AI 绘画工具，艺术感极强，适合创作者、设计师。',
+            category: 'image',
+            url: 'https://www.midjourney.com/',
+            affiliate: 'https://www.midjourney.com/',
+            badge: '🔥 热门'
+        },
+        {
+            id: 10,
+            name: 'DALL·E 3',
+            desc: 'OpenAI 的图像生成模型，集成在 ChatGPT 中，简单易用。',
+            category: 'image',
+            url: 'https://openai.com/dall-e-3',
+            affiliate: '',
+            badge: ''
+        },
+        {
+            id: 11,
+            name: 'Stable Diffusion',
+            desc: '开源 AI 绘画，高度可定制，本地部署免费。',
+            category: 'image',
+            url: 'https://stability.ai/',
+            affiliate: 'https://stability.ai/',
+            badge: '🆓 免费'
+        },
+        {
+            id: 12,
+            name: 'Canva AI',
+            desc: '在线设计工具内嵌 AI，一键生成图片、海报、Logo。',
+            category: 'image',
+            url: 'https://www.canva.com/',
+            affiliate: '',
+            badge: ''
+        },
+        {
+            id: 13,
+            name: 'Leonardo AI',
+            desc: '游戏素材 AI 生成器，擅长角色、场景、UI 素材。',
+            category: 'image',
+            url: 'https://leonardo.ai/',
+            affiliate: '',
+            badge: '🎮 游戏'
+        },
+        {
+            id: 14,
+            name: 'Clipdrop',
+            desc: 'Stability AI 旗下，一键去背景、放大、修图，速度快。',
+            category: 'image',
+            url: 'https://clipdrop.co/',
+            affiliate: 'https://clipdrop.co/',
+            badge: ''
+        },
+
+        // ---- 💻 代码 ----
+        {
+            id: 15,
+            name: 'GitHub Copilot',
+            desc: 'AI 编程助手，VS Code 内实时补全代码，支持多种语言。',
+            category: 'code',
+            url: 'https://github.com/features/copilot',
+            affiliate: '',
+            badge: '🔥 热门'
+        },
+        {
+            id: 16,
+            name: 'Cursor',
+            desc: 'AI-first 代码编辑器，内置多个模型，聊天式编程体验。',
+            category: 'code',
+            url: 'https://cursor.sh/',
+            affiliate: '',
+            badge: ''
+        },
+        {
+            id: 17,
+            name: 'Tabnine',
+            desc: 'AI 代码补全工具，注重隐私，支持本地模型。',
+            category: 'code',
+            url: 'https://www.tabnine.com/',
+            affiliate: '',
+            badge: '🔒 隐私'
+        },
+        {
+            id: 18,
+            name: 'Replit AI',
+            desc: '在线 IDE 内置 AI，直接聊天生成完整应用。',
+            category: 'code',
+            url: 'https://replit.com/',
+            affiliate: '',
+            badge: '☁️ 在线'
+        },
+
+        // ---- 🎵 音频 ----
+        {
+            id: 19,
+            name: 'ElevenLabs',
+            desc: '超逼真 AI 语音合成，支持多语言、情感、声音克隆。',
+            category: 'audio',
+            url: 'https://elevenlabs.io/',
+            affiliate: '',
+            badge: '🔥 热门'
+        },
+        {
+            id: 20,
+            name: 'Murf AI',
+            desc: '商用 AI 配音工具，适合视频旁白、播客、广告。',
+            category: 'audio',
+            url: 'https://murf.ai/',
+            affiliate: '',
+            badge: '🎙️ 商用'
+        },
+        {
+            id: 21,
+            name: 'Descript',
+            desc: 'AI 音视频编辑，像编辑文档一样编辑播客/视频。',
+            category: 'audio',
+            url: 'https://www.descript.com/',
+            affiliate: '',
+            badge: ''
+        },
+
+        // ---- 🎬 视频 ----
+        {
+            id: 22,
+            name: 'Runway Gen-3',
+            desc: 'AI 视频生成与编辑，文生视频、图生视频、视频修图。',
+            category: 'video',
+            url: 'https://runwayml.com/',
+            affiliate: '',
+            badge: '🔥 热门'
+        },
+        {
+            id: 23,
+            name: 'Pika Labs',
+            desc: '简单好用的 AI 视频生成，动效流畅，上手快。',
+            category: 'video',
+            url: 'https://pika.art/',
+            affiliate: 'https://pika.art/',
+            badge: ''
+        },
+        {
+            id: 24,
+            name: 'HeyGen',
+            desc: 'AI 数字人视频生成，上传文案即可生成真人演讲视频。',
+            category: 'video',
+            url: 'https://www.heygen.com/',
+            affiliate: '',
+            badge: '👤 数字人'
+        },
+
+        // ---- 🎯 设计 ----
+        {
+            id: 25,
+            name: 'Figma AI',
+            desc: 'Figma 内置 AI，自动生成 UI 组件、设计稿、图标。',
+            category: 'design',
+            url: 'https://www.figma.com/',
+            affiliate: 'https://www.figma.com/',
+            badge: ''
+        },
+        {
+            id: 26,
+            name: 'Uizard',
+            desc: 'AI 一键将手绘草图转成 UI 设计稿，适合产品经理。',
+            category: 'design',
+            url: 'https://uizard.io/',
+            affiliate: '',
+            badge: '📝 草图转 UI'
+        },
+        {
+            id: 27,
+            name: 'Remove.bg',
+            desc: 'AI 一键去除图片背景，支持批量处理。',
+            category: 'design',
+            url: 'https://www.remove.bg/',
+            affiliate: '',
+            badge: '🆓 免费'
+        },
+
+        // ---- ⚡ 效率 ----
+        {
+            id: 28,
+            name: 'Otter.ai',
+            desc: 'AI 会议记录，自动转录、总结、提取行动项。',
+            category: 'productivity',
+            url: 'https://otter.ai/',
+            affiliate: '',
+            badge: ''
+        },
+        {
+            id: 29,
+            name: 'Mem.ai',
+            desc: 'AI 笔记工具，自动组织、链接、检索你的笔记。',
+            category: 'productivity',
+            url: 'https://mem.ai/',
+            affiliate: '',
+            badge: '🧠 智能笔记'
+        },
+        {
+            id: 30,
+            name: 'Perplexity AI',
+            desc: 'AI 搜索引擎，带来源引用，比传统搜索更高效。',
+            category: 'productivity',
+            url: 'https://www.perplexity.ai/',
+            affiliate: '',
+            badge: ''
+        },
+        {
+            id: 31,
+            name: 'Gamma',
+            desc: 'AI 一键生成 PPT/文档/网页，搭配精美模板。',
+            category: 'productivity',
+            url: 'https://gamma.app/',
+            affiliate: '',
+            badge: '📊 PPT'
+        },
+        {
+            id: 32,
+            name: 'Tome',
+            desc: 'AI 故事化叙述工具，适合做创意提案和演示。',
+            category: 'productivity',
+            url: 'https://tome.app/',
+            affiliate: '',
+            badge: ''
+        },
+        // ====== 新增工具 ======
+        // ---- ✍️ 写作 ----
+        {
+            id: 33,
+            name: 'QuillBot',
+            desc: 'AI 改写润色工具，支持同义替换、语法检查、摘要生成，写论文必备。',
+            category: 'writing',
+            url: 'https://quillbot.com/',
+            affiliate: '',
+            badge: '🎓 学术'
+        },
+        {
+            id: 34,
+            name: 'Sudowrite',
+            desc: '专为小说创作设计的 AI 写作工具，帮你突破写作瓶颈、生成故事情节。',
+            category: 'writing',
+            url: 'https://www.sudowrite.com/',
+            affiliate: '',
+            badge: '📖 小说'
+        },
+        // ---- 🎨 图像 ----
+        {
+            id: 35,
+            name: 'Adobe Firefly',
+            desc: 'Adobe 官方 AI 图像生成器，与 Photoshop 无缝集成，商用安全。',
+            category: 'image',
+            url: 'https://www.adobe.com/products/firefly.html',
+            affiliate: '',
+            badge: '⭐ 商用'
+        },
+        {
+            id: 36,
+            name: 'Ideogram',
+            desc: 'AI 图像生成，文字渲染能力超强，适合 Logo、海报、标题图。',
+            category: 'image',
+            url: 'https://ideogram.ai/',
+            affiliate: 'https://ideogram.ai/',
+            badge: '🆕 热门'
+        },
+        // ---- 💻 代码 ----
+        {
+            id: 37,
+            name: 'Windsurf',
+            desc: '新一代 AI 代码编辑器，深度理解你的代码库，智能补全和重构。',
+            category: 'code',
+            url: 'https://windsurf.ai/',
+            affiliate: 'https://windsurf.ai/',
+            badge: '🔥 热门'
+        },
+        {
+            id: 38,
+            name: 'Claude Code',
+            desc: 'Anthropic 出品的 AI 编程助手，擅长复杂逻辑和长上下文理解。',
+            category: 'code',
+            url: 'https://claude.ai/',
+            affiliate: 'https://claude.ai/',
+            badge: ''
+        },
+        // ---- 🎵 音频 ----
+        {
+            id: 39,
+            name: 'Suno AI',
+            desc: 'AI 音乐生成，输入歌词和风格即可生成完整歌曲，效果惊艳。',
+            category: 'audio',
+            url: 'https://suno.com/',
+            affiliate: 'https://suno.com/',
+            badge: '🎵 音乐'
+        },
+        {
+            id: 40,
+            name: 'AIVA',
+            desc: 'AI 作曲助手，擅长古典、电影配乐、游戏背景音乐创作。',
+            category: 'audio',
+            url: 'https://www.aiva.ai/',
+            affiliate: 'https://www.aiva.ai/',
+            badge: '🎼 作曲'
+        },
+        // ---- 🎬 视频 ----
+        {
+            id: 41,
+            name: 'Sora',
+            desc: 'OpenAI 的文生视频模型，根据文字直接生成高质量视频。',
+            category: 'video',
+            url: 'https://openai.com/sora',
+            affiliate: 'https://openai.com/sora',
+            badge: '🔥 期待'
+        },
+        {
+            id: 42,
+            name: 'CapCut',
+            desc: '字节跳动出品的一站式视频编辑工具，内置 AI 剪辑、字幕、特效。',
+            category: 'video',
+            url: 'https://www.capcut.com/',
+            affiliate: 'https://www.capcut.com/',
+            badge: '🆓 免费'
+        },
+        // ---- 🎯 设计 ----
+        {
+            id: 43,
+            name: 'Looka',
+            desc: 'AI Logo 设计工具，输入品牌名即可生成多种 Logo 方案。',
+            category: 'design',
+            url: 'https://looka.com/',
+            affiliate: '',
+            badge: '🎨 Logo'
+        },
+        {
+            id: 44,
+            name: 'Magician (Figma)',
+            desc: 'Figma 插件，AI 生成图标、文案、图片，设计效率翻倍。',
+            category: 'design',
+            url: 'https://magician.design/',
+            affiliate: 'https://magician.design/',
+            badge: '🔌 插件'
+        },
+        // ---- ⚡ 效率 ----
+        {
+            id: 45,
+            name: 'Motion',
+            desc: 'AI 项目管理工具，自动排期、优化日程，团队协作利器。',
+            category: 'productivity',
+            url: 'https://www.usemotion.com/',
+            affiliate: '',
+            badge: '📅 排期'
+        },
+        {
+            id: 46,
+            name: 'Reclaim AI',
+            desc: 'AI 日历助手，自动安排会议、习惯、任务，保护专注时间。',
+            category: 'productivity',
+            url: 'https://reclaim.ai/',
+            affiliate: '',
+            badge: '📆 日历'
+        },
+        // ---- 新增：🔍 搜索 ----
+        {
+            id: 47,
+            name: 'Google Gemini',
+            desc: 'Google 的多模态 AI，支持文本、图像、代码、推理，免费使用。',
+            category: 'productivity',
+            url: 'https://gemini.google.com/',
+            affiliate: 'https://gemini.google.com/',
+            badge: '🆓 免费'
+        },
+        // ====== 新增工具（第二批）======
+        // ---- ✍️ 写作 ----
+        {
+            id: 48,
+            name: 'Poe',
+            desc: 'Quora 出品的 AI 平台，集成 ChatGPT、Claude、Gemini 等多个模型，一站式使用。',
+            category: 'writing',
+            url: 'https://poe.com/',
+            affiliate: 'https://poe.com/',
+            badge: '🆓 免费'
+        },
+        {
+            id: 49,
+            name: 'DeepL',
+            desc: '全球最准确的 AI 翻译工具，支持 30+ 语言，翻译质量远超谷歌翻译。',
+            category: 'writing',
+            url: 'https://www.deepl.com/',
+            affiliate: 'https://www.deepl.com/',
+            badge: '🌍 翻译'
+        },
+        {
+            id: 50,
+            name: 'Frase',
+            desc: 'AI 内容优化工具，专为 SEO 设计，自动生成符合搜索意图的高质量文章。',
+            category: 'writing',
+            url: 'https://www.frase.io/',
+            affiliate: '',
+            badge: '🔍 SEO'
+        },
+        // ---- 🎨 图像 ----
+        {
+            id: 51,
+            name: 'Playground AI',
+            desc: '在线 AI 图像编辑和生成平台，支持文生图、图生图、局部修改，免费额度充足。',
+            category: 'image',
+            url: 'https://playgroundai.com/',
+            affiliate: 'https://playgroundai.com/',
+            badge: '🆓 免费'
+        },
+        {
+            id: 52,
+            name: 'Lexica',
+            desc: 'Stable Diffusion 图像搜索引擎和生成器，海量高质量提示词参考。',
+            category: 'image',
+            url: 'https://lexica.art/',
+            affiliate: 'https://lexica.art/',
+            badge: '🔍 搜索'
+        },
+        // ---- 💻 代码 ----
+        {
+            id: 53,
+            name: 'Amazon Q',
+            desc: 'AWS 出品的企业级 AI 编程助手，深度集成 AWS 生态，代码安全有保障。',
+            category: 'code',
+            url: 'https://aws.amazon.com/q/',
+            affiliate: 'https://aws.amazon.com/q/',
+            badge: '☁️ AWS'
+        },
+        {
+            id: 54,
+            name: 'Sourcegraph Cody',
+            desc: 'AI 代码搜索和理解工具，能读懂整个代码库，帮你快速定位和修复问题。',
+            category: 'code',
+            url: 'https://sourcegraph.com/cody',
+            affiliate: 'https://sourcegraph.com/cody',
+            badge: '🔍 搜索'
+        },
+        // ---- 🎵 音频 ----
+        {
+            id: 55,
+            name: 'Krisp',
+            desc: 'AI 降噪工具，实时消除背景噪音、回声和杂音，通话质量瞬间提升。',
+            category: 'audio',
+            url: 'https://krisp.ai/',
+            affiliate: '',
+            badge: '🔇 降噪'
+        },
+        // ---- 🎬 视频 ----
+        {
+            id: 56,
+            name: 'Synthesia',
+            desc: 'AI 数字人视频平台，上传文案即可生成真人演讲视频，支持 120+ 语言。',
+            category: 'video',
+            url: 'https://www.synthesia.io/',
+            affiliate: '',
+            badge: '👤 数字人'
+        },
+        {
+            id: 57,
+            name: 'InVideo',
+            desc: 'AI 视频编辑器，输入文字自动生成视频，适合营销视频和社交媒体内容。',
+            category: 'video',
+            url: 'https://invideo.io/',
+            affiliate: '',
+            badge: '🎬 剪辑'
+        },
+        // ---- 🎯 设计 ----
+        {
+            id: 58,
+            name: 'Visily',
+            desc: 'AI 产品设计工具，支持截图转设计稿、手绘转 UI，产品经理和设计师必备。',
+            category: 'design',
+            url: 'https://www.visily.ai/',
+            affiliate: 'https://www.visily.ai/',
+            badge: '📱 UI'
+        },
+        // ---- ⚡ 效率 ----
+        {
+            id: 59,
+            name: 'Fireflies',
+            desc: 'AI 会议助手，自动加入会议录制、转录、总结，支持 Zoom/Teams/Google Meet。',
+            category: 'productivity',
+            url: 'https://fireflies.ai/',
+            affiliate: '',
+            badge: '📋 会议'
+        },
+        {
+            id: 60,
+            name: 'Timely',
+            desc: 'AI 时间追踪工具，自动记录你在各个应用和网站上的时间消耗，提升效率。',
+            category: 'productivity',
+            url: 'https://timelyapp.com/',
+            affiliate: 'https://timelyapp.com/?ref=aitoolsnav',
+            badge: '⏱️ 时间'
+        },
+        // ====== 第三批新增工具 ======
+        {
+            id: 61,
+            name: 'Bardeen',
+            desc: 'AI 自动化工具，一句话就能创建自动化工作流，连接 100+ 常用应用。',
+            category: 'productivity',
+            url: 'https://www.bardeen.ai/',
+            affiliate: 'https://www.bardeen.ai/?ref=aitoolsnav',
+            badge: '🤖 自动化'
+        },
+        {
+            id: 62,
+            name: 'Luma AI',
+            desc: 'AI 3D 建模工具，用手机拍照就能生成高质量 3D 模型，VR/AR 必备。',
+            category: 'image',
+            url: 'https://lumalabs.ai/',
+            affiliate: 'https://lumalabs.ai/',
+            badge: '🆕 3D'
+        },
+        {
+            id: 63,
+            name: 'V0 by Vercel',
+            desc: 'AI 前端代码生成工具，描述需求直接生成 React/Tailwind 界面代码。',
+            category: 'code',
+            url: 'https://v0.dev/',
+            affiliate: 'https://v0.dev/',
+            badge: '🔥 热门'
+        },
+        {
+            id: 64,
+            name: 'Bolt.new',
+            desc: 'AI 全栈应用生成器，在浏览器里直接生成和部署完整应用。',
+            category: 'code',
+            url: 'https://bolt.new/',
+            affiliate: 'https://bolt.new/',
+            badge: '⚡ 全栈'
+        },
+        {
+            id: 65,
+            name: 'Hugging Face',
+            desc: '全球最大 AI 模型社区，免费托管和分享模型，AI 开发者的 GitHub。',
+            category: 'code',
+            url: 'https://huggingface.co/',
+            affiliate: 'https://huggingface.co/',
+            badge: '🆓 开源'
+        },
+        {
+            id: 66,
+            name: 'Udio',
+            desc: 'AI 音乐生成平台，创始人来自 Google DeepMind，音乐质量极高。',
+            category: 'audio',
+            url: 'https://www.udio.com/',
+            affiliate: 'https://www.udio.com/',
+            badge: '🎵 音乐'
+        },
+        {
+            id: 67,
+            name: 'Lovable',
+            desc: 'AI 应用构建器，用自然语言描述需求即可生成完整的 Web 应用。',
+            category: 'code',
+            url: 'https://lovable.dev/',
+            affiliate: 'https://lovable.dev/',
+            badge: '🚀 快速'
+        },
+        {
+            id: 68,
+            name: 'Kling AI',
+            desc: '快手出品的 AI 视频生成工具，可以生成最长 2 分钟的高质量视频。',
+            category: 'video',
+            url: 'https://kling.kuaishou.com/',
+            affiliate: 'https://kling.kuaishou.com/',
+            badge: '🔥 热门'
+        },
+        {
+            id: 69,
+            name: 'Hailuo AI',
+            desc: 'MiniMax 出品的 AI 视频生成，只需文字描述就能生成高质量短视频。',
+            category: 'video',
+            url: 'https://hailuoai.video/',
+            affiliate: 'https://hailuoai.video/',
+            badge: '🆕 新工具'
+        },
+        {
+            id: 70,
+            name: 'Cursor AI',
+            desc: 'AI 代码编辑器，内置多模型切换，聊天式编程，VSCode 深度集成。',
+            category: 'code',
+            url: 'https://cursor.com/',
+            affiliate: 'https://cursor.com/?ref=aitoolsnav',
+            badge: '🔥 热门'
+        },
+        // ====== 第四批 ======
+        {
+            id: 71, name: 'Character AI', desc: 'AI 角色聊天平台，创造并和 AI 角色对话，沉浸式体验。', category: 'writing', url: 'https://character.ai/', affiliate: 'https://character.ai/', badge: '💬 聊天'
+        },
+        {
+            id: 72, name: 'You.com', desc: 'AI 搜索引擎，集成 ChatGPT、Claude、Gemini，一站式 AI 搜索。', category: 'productivity', url: 'https://you.com/', affiliate: 'https://you.com/', badge: '🔍 搜索'
+        },
+        {
+            id: 73, name: 'Taskade', desc: 'AI 任务管理和协作工具，自动生成任务、日程和项目计划。', category: 'productivity', url: 'https://www.taskade.com/', affiliate: 'https://www.taskade.com/', badge: '📋 管理'
+        },
+        {
+            id: 74, name: 'Beautiful.ai', desc: 'AI 智能 PPT 生成器，自动排版布局，输入内容即可生成精美演示。', category: 'design', url: 'https://www.beautiful.ai/', affiliate: 'https://www.beautiful.ai/', badge: '📊 PPT'
+        },
+        {
+            id: 75, name: 'Consensus', desc: 'AI 学术搜索引擎，从研究论文中直接提取答案和证据。', category: 'productivity', url: 'https://consensus.app/', affiliate: 'https://consensus.app/', badge: '🎓 学术'
+        },
+        {
+            id: 76, name: 'ChatPDF', desc: '上传 PDF，直接和文档对话，快速提取摘要和关键信息。', category: 'productivity', url: 'https://www.chatpdf.com/', affiliate: 'https://www.chatpdf.com/', badge: '📄 PDF'
+        },
+        {
+            id: 77, name: 'Julius AI', desc: 'AI 数据分析师，上传 CSV/Excel 即可对话分析，自动生成图表。', category: 'productivity', url: 'https://julius.ai/', affiliate: 'https://julius.ai/', badge: '📊 数据'
+        },
+        {
+            id: 78, name: 'Browse AI', desc: 'AI 网页数据抓取，无需编程即可从任何网站提取和监控数据。', category: 'productivity', url: 'https://www.browse.ai/', affiliate: 'https://www.browse.ai/', badge: '🤖 抓取'
+        },
+        {
+            id: 79, name: 'Podcastle', desc: 'AI 播客工作室，录制/编辑/转录/发布一站式，声音质量专业级。', category: 'audio', url: 'https://podcastle.ai/', affiliate: 'https://podcastle.ai/', badge: '🎙️ 播客'
+        },
+        {
+            id: 80, name: 'Speechify', desc: 'AI 文字转语音，支持名人声音和多种语言，阅读速度可调。', category: 'audio', url: 'https://speechify.com/', affiliate: 'https://speechify.com/', badge: '🔊 TTS'
+        },
+        {
+            id: 81, name: 'Jenni AI', desc: 'AI 学术写作助手，自动推荐引用、润色论文、生成文献综述。', category: 'writing', url: 'https://jenni.ai/', affiliate: 'https://jenni.ai/', badge: '🎓 论文'
+        },
+        {
+            id: 82, name: 'TLDraw', desc: 'AI 白板绘图工具，画草图即可转换成精美图表和 UI 稿。', category: 'design', url: 'https://www.tldraw.com/', affiliate: 'https://www.tldraw.com/', badge: '✏️ 白板'
+        },
+        {
+            id: 83, name: 'Make', desc: '强大的自动化平台（原 Integromat），可视化搭建复杂工作流。', category: 'productivity', url: 'https://www.make.com/', affiliate: 'https://www.make.com/', badge: '🔗 自动化'
+        },
+        {
+            id: 84, name: 'Miro AI', desc: 'AI 在线协作白板，自动生成思维导图、用户故事、技术文档。', category: 'design', url: 'https://miro.com/', affiliate: 'https://miro.com/', badge: '🧠 协作'
+        },
+        {
+            id: 85, name: 'NaturalReader', desc: 'AI 自然语音朗读，支持 20+ 语言，适合有声书和学习材料。', category: 'audio', url: 'https://www.naturalreaders.com/', affiliate: 'https://www.naturalreaders.com/', badge: '📖 朗读'
+        },
+        {id:86,name:'Monica AI',desc:'AI 个人助手 Chrome 插件，集成 ChatGPT/Claude，随手调用 AI。',category:'productivity',url:'https://monica.im/',affiliate:'https://monica.im/',badge:'🔌 插件'},
+        {id:87,name:'Harpa AI',desc:'浏览器 AI 助手插件，自动总结网页、提取信息、生成文案。',category:'productivity',url:'https://harpa.ai/',affiliate:'https://harpa.ai/',badge:'🆓 免费'},
+        {id:88,name:'Merlin AI',desc:'一键 AI 助手 Chrome 扩展，在任何网页上使用 ChatGPT。',category:'productivity',url:'https://merlin.foyer.work/',affiliate:'https://merlin.foyer.work/',badge:'🔌 扩展'},
+        {id:89,name:'SciSpace',desc:'AI 论文阅读助手，解释复杂概念、提取研究要点、生成引用。',category:'writing',url:'https://typeset.io/',affiliate:'https://typeset.io/',badge:'🎓 研究'},
+        {id:90,name:'HyperWrite',desc:'AI 写作助手，可根据你的写作风格个性化生成内容。',category:'writing',url:'https://www.hyperwriteai.com/',affiliate:'https://www.hyperwriteai.com/',badge:'✍️ 写作'},
+        {id:91,name:'Deepl Write',desc:'Deepl 出品的 AI 写作润色工具，支持多语言改写优化。',category:'writing',url:'https://www.deepl.com/write',affiliate:'https://www.deepl.com/write',badge:'🌍 多语言'},
+        {id:92,name:'Wordtune',desc:'AI 改写和润色，一句话给你多种表达方式选择。',category:'writing',url:'https://www.wordtune.com/',affiliate:'https://www.wordtune.com/',badge:'📝 润色'},
+        {id:93,name:'DreamStudio',desc:'Stability AI 官方的 Stable Diffusion 在线版，无需安装即刻生成。',category:'image',url:'https://dreamstudio.ai/',affiliate:'https://dreamstudio.ai/',badge:'🎨 绘图'},
+        {id:94,name:'Fotor AI',desc:'全能 AI 图像工具，AI 扩图、消除、替换、一键美化。',category:'image',url:'https://www.fotor.com/ai/',affiliate:'https://www.fotor.com/ai/',badge:'🖼️ 修图'},
+        {id:95,name:'Pixlr AI',desc:'免费在线 AI 图像编辑器，支持 AI 生成、抠图、滤镜。',category:'image',url:'https://pixlr.com/',affiliate:'https://pixlr.com/',badge:'🆓 免费'},
+        {id:96,name:'Lensa AI',desc:'AI 自拍美化 App，一键生成专业头像和艺术风格照片。',category:'image',url:'https://lensa-ai.com/',affiliate:'https://lensa-ai.com/',badge:'📱 手机'},
+        {id:97,name:'Deep Dream',desc:'Google 最早的 AI 图像生成器之一，产生迷幻梦境风格作品。',category:'image',url:'https://deepdreamgenerator.com/',affiliate:'https://deepdreamgenerator.com/',badge:'🌀 艺术'},
+        {id:98,name:'Skybox AI',desc:'AI 360° 全景天空盒生成，适合游戏开发和 VR 场景。',category:'image',url:'https://skybox.blockadelabs.com/',affiliate:'https://skybox.blockadelabs.com/',badge:'🎮 游戏'},
+        {id:99,name:'Vidnoz AI',desc:'免费 AI 数字人视频生成工具，300+ AI 虚拟形象可选。',category:'video',url:'https://www.vidnoz.com/',affiliate:'https://www.vidnoz.com/',badge:'🆓 免费'},
+        {id:100,name:'Fliki AI',desc:'AI 文字转视频，输入文案自动生成短视频，适合社媒内容。',category:'video',url:'https://fliki.ai/',affiliate:'https://fliki.ai/',badge:'📱 社媒'},
+        // batch: 100-200
+        {id:101,name:'Pika Art',desc:'AI 视频生成编辑平台，简单易用，动效流畅。',category:'video',url:'https://pika.art/',affiliate:'https://pika.art/',badge:''},
+        {id:102,name:'Haiper AI',desc:'AI 视频生成工具，由前 DeepMind 团队打造，效果惊艳。',category:'video',url:'https://haiper.ai/',affiliate:'https://haiper.ai/',badge:'🆕'},
+        {id:103,name:'Opus Clip',desc:'AI 长视频自动剪辑成短视频，一键提取高光片段。',category:'video',url:'https://www.opus.pro/',affiliate:'https://www.opus.pro/',badge:'✂️ 剪辑'},
+        {id:104,name:'Wisecut',desc:'AI 自动视频编辑，智能剪切沉默片段、添加字幕和背景音乐。',category:'video',url:'https://www.wisecut.video/',affiliate:'https://www.wisecut.video/',badge:''},
+        {id:105,name:'D-ID',desc:'AI 数字人视频平台，上传照片即可生成会说话的数字人。',category:'video',url:'https://www.d-id.com/',affiliate:'https://www.d-id.com/',badge:'👤'},
+        {id:106,name:'Deepbrain AI',desc:'AI 虚拟主播生成，支持 80+ 语言，适合培训视频和新闻播报。',category:'video',url:'https://www.deepbrain.io/',affiliate:'https://www.deepbrain.io/',badge:''},
+        {id:107,name:'Colossyan',desc:'企业级 AI 视频生成，适合培训、营销和内部沟通场景。',category:'video',url:'https://www.colossyan.com/',affiliate:'https://www.colossyan.com/',badge:'🏢 企业'},
+        {id:108,name:'Elai.io',desc:'AI 数字人视频创作工具，无需拍摄设备即可做专业视频。',category:'video',url:'https://elai.io/',affiliate:'https://elai.io/',badge:''},
+        {id:109,name:'Rask AI',desc:'AI 视频翻译和配音，一键将视频翻译成 130+ 种语言。',category:'video',url:'https://www.rask.ai/',affiliate:'https://www.rask.ai/',badge:'🌍'},
+        {id:110,name:'Lalal.ai',desc:'AI 音频分离工具，从音乐中提取人声或伴奏，效果顶尖。',category:'audio',url:'https://www.lalal.ai/',affiliate:'https://www.lalal.ai/',badge:'🎼'},
+        {id:111,name:'Voice.ai',desc:'AI 实时变声器，支持 Discord/Zoom/游戏，声音变换自然。',category:'audio',url:'https://voice.ai/',affiliate:'https://voice.ai/',badge:'🎤'},
+        {id:112,name:'Resemble AI',desc:'企业级 AI 语音克隆和合成，支持自定义品牌声音。',category:'audio',url:'https://www.resemble.ai/',affiliate:'https://www.resemble.ai/',badge:'🏢'},
+        {id:113,name:'WellSaid Labs',desc:'AI 配音平台，声音质量达到专业录音室级别。',category:'audio',url:'https://wellsaidlabs.com/',affiliate:'https://wellsaidlabs.com/',badge:'🎙️'},
+        {id:114,name:'PlayHT',desc:'AI 文字转语音，拥有超逼真的人声库，适合播客和有声书。',category:'audio',url:'https://play.ht/',affiliate:'https://play.ht/',badge:''},
+        {id:115,name:'Listnr AI',desc:'AI 播客配音工具，生成自然的语音并直接发布到各大平台。',category:'audio',url:'https://listnr.ai/',affiliate:'https://listnr.ai/',badge:'🎧'},
+        {id:116,name:'Cleanvoice AI',desc:'AI 播客清洁工具，自动去除语气词、沉默、口腔噪音。',category:'audio',url:'https://cleanvoice.ai/',affiliate:'https://cleanvoice.ai/',badge:'🧹'},
+        {id:117,name:'Adobe Podcast',desc:'Adobe 出品 AI 播客录音增强，一键提升音质到专业级。',category:'audio',url:'https://podcast.adobe.com/',affiliate:'https://podcast.adobe.com/',badge:'🆓'},
+        {id:118,name:'Beatoven AI',desc:'AI 免版税背景音乐生成，根据视频情绪自动配乐。',category:'audio',url:'https://www.beatoven.ai/',affiliate:'https://www.beatoven.ai/',badge:'🎵'},
+        {id:119,name:'Soundraw',desc:'AI 音乐创作平台，自定义风格和情绪，生成独一无二的音乐。',category:'audio',url:'https://soundraw.io/',affiliate:'https://soundraw.io/',badge:''},
+        {id:120,name:'Codeium',desc:'免费 AI 代码补全工具，支持 70+ 编辑器，对标 Copilot。',category:'code',url:'https://codeium.com/',affiliate:'https://codeium.com/',badge:'🆓'},
+        {id:121,name:'Phind',desc:'面向开发者的 AI 搜索引擎，基于代码库回答技术问题。',category:'code',url:'https://www.phind.com/',affiliate:'https://www.phind.com/',badge:'🔍'},
+        {id:122,name:'Continue',desc:'开源 AI 代码助手，可接任何 LLM，完全可自定义。',category:'code',url:'https://continue.dev/',affiliate:'https://continue.dev/',badge:'🆓 开源'},
+        {id:123,name:'Mutable AI',desc:'AI 代码重构和自动文档生成，把混乱代码整理干净。',category:'code',url:'https://mutable.ai/',affiliate:'https://mutable.ai/',badge:''},
+        {id:124,name:'Civitai',desc:'最大的 AI 绘图模型分享社区，下载 SD/LoRA 模型，海量作品展示。',category:'community',url:'https://civitai.com/',affiliate:'https://civitai.com/',badge:'🔥 热门',url:'https://civitai.com/',affiliate:'https://civitai.com/',badge:'🔥 热门'},
+        {id:125,name:'PromptBase',desc:'AI 提示词交易市场，买卖 Midjourney/DALL·E/Stable Diffusion 提示词。',category:'community',url:'https://promptbase.com/',affiliate:'https://promptbase.com/',badge:'💰 交易',url:'https://promptbase.com/',affiliate:'https://promptbase.com/',badge:'💰 交易'},
+        {id:126,name:'OpenArt',desc:'AI 艺术创作社区和编辑器，内置 20+ 模型，训练你自己的风格。',category:'community',url:'https://openart.ai/',affiliate:'https://openart.ai/',badge:'🎨 社区',url:'https://openart.ai/',affiliate:'https://openart.ai/',badge:'🎨 社区'},
+        {id:127,name:'NightCafe',desc:'AI 艺术创作和社区平台，集成多种 AI 模型，每日免费额度。',category:'community',url:'https://creator.nightcafe.studio/',affiliate:'https://creator.nightcafe.studio/',badge:'🆓',url:'https://creator.nightcafe.studio/',affiliate:'https://creator.nightcafe.studio/',badge:'🆓'},
+        {id:128,name:'Replicate',desc:'AI 模型托管和运行平台，数千个开源 AI 模型一键部署调用。',category:'community',url:'https://replicate.com/',affiliate:'https://replicate.com/',badge:'☁️ 托管',url:'https://replicate.com/',affiliate:'https://replicate.com/',badge:'☁️ 托管'},
+        {id:129,name:'Hugging Face Spaces',desc:'AI 应用和 Demo 托管平台，免费部署机器学习应用。',category:'community',url:'https://huggingface.co/spaces',affiliate:'https://huggingface.co/spaces',badge:'🆓',url:'https://huggingface.co/spaces',affiliate:'https://huggingface.co/spaces',badge:'🆓'},
+        {id:130,name:'Artbreeder',desc:'AI 图像混搭社区，混合基因生成独特风格的艺术图像。',category:'community',url:'https://www.artbreeder.com/',affiliate:'https://www.artbreeder.com/',badge:'🧬 混搭',url:'https://www.artbreeder.com/',affiliate:'https://www.artbreeder.com/',badge:'🧬 混搭'},
+        {id:131,name:'Krea AI',desc:'AI 实时图像生成社区，实时 Canvas 绘画体验，艺术家社区。',category:'community',url:'https://www.krea.ai/',affiliate:'https://www.krea.ai/',badge:'',url:'https://www.krea.ai/',affiliate:'https://www.krea.ai/',badge:''},
+        {id:132,name:'Freepik AI',desc:'AI 图像生成和素材库，内置 Pikaso 实时 AI 绘图工具。',category:'image',url:'https://www.freepik.com/ai',affiliate:'https://www.freepik.com/ai',badge:'🖼️'},
+        {id:133,name:'Stockimg AI',desc:'AI 素材生成社区，logo/海报/壁纸/书籍封面一体化生成。',category:'image',url:'https://stockimg.ai/',affiliate:'https://stockimg.ai/',badge:''},
+        {id:134,name:'RunDiffusion',desc:'云端 Stable Diffusion 创作平台，预装 100+ 模型，免配置上手。',category:'image',url:'https://rundiffusion.com/',affiliate:'https://rundiffusion.com/',badge:'☁️'},
+        {id:135,name:'Genmo AI',desc:'AI 创意视频和图像创作社区，图生视频、视频编辑超简单。',category:'community',url:'https://www.genmo.ai/',affiliate:'https://www.genmo.ai/',badge:'🎬'},
+        {id:136,name:'Reddit r/StableDiffusion',desc:'最大 SD 中文社区，分享提示词、模型和作品。',category:'community',url:'https://www.reddit.com/r/StableDiffusion/',affiliate:'https://www.reddit.com/r/StableDiffusion/',badge:''},
+        {id:137,name:'Tensor Art',desc:'中日韩 AI 绘画社区，支持 SD 在线生图和模型分享。',category:'community',url:'https://tensor.art/',affiliate:'https://tensor.art/',badge:'🌏'},
+        {id:138,name:'SeaArt AI',desc:'AI 绘画创作社区，丰富的模型库和提示词广场。',category:'community',url:'https://www.seaart.ai/',affiliate:'https://www.seaart.ai/',badge:''},
+        {id:139,name:'LiblibAI',desc:'国内最大的 SD 模型分享社区，中文界面，海量模型和 LoRA。',category:'community',url:'https://www.liblib.ai/',affiliate:'https://www.liblib.ai/',badge:'🇨🇳'},
+        {id:140,name:'Shakker AI',desc:'AI 图像模型分享和在线生图社区，支持各种风格。',category:'community',url:'https://www.shakker.ai/',affiliate:'https://www.shakker.ai/',badge:''},
+        {id:141,name:'Playground Community',desc:'Playground AI 官方社区，分享 AI 艺术作品和创作技巧。',category:'community',url:'https://playground.com/feed',affiliate:'https://playground.com/feed',badge:'🆓'},
+        {id:142,name:'Maze Guru',desc:'AI 艺术灵感社区，发现 Midjourney/DALL·E/SD 创意作品。',category:'community',url:'https://maze.guru/',affiliate:'https://maze.guru/',badge:''},
+        {id:143,name:'Chichi-pui',desc:'日本 AI 插图社区，聚焦高质量 AI 艺术作品。',category:'community',url:'https://www.chichi-pui.com/',affiliate:'https://www.chichi-pui.com/',badge:'🇯🇵'},
+        {id:144,name:'PromptHero',desc:'最大的 AI 提示词搜索引擎，搜索 Midjourney/SD 优秀提示词。',category:'community',url:'https://prompthero.com/',affiliate:'https://prompthero.com/',badge:'🔍'},
+        {id:145,name:'Midjourney Showcase',desc:'Midjourney 官方作品展示社区，精品 AI 艺术作品集。',category:'community',url:'https://www.midjourney.com/showcase/',affiliate:'https://www.midjourney.com/showcase/',badge:'🏆'},
+    ];
+
+    // ---- 渲染工具卡片 ----
+    const grid = document.getElementById('toolGrid');
+    const noResults = document.getElementById('noResults');
+    const searchInput = document.getElementById('searchInput');
+    const categoryTabs = document.querySelectorAll('.category-tab');
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    let sortMode = 'default';
+    let showFavOnly = false;
+    
+    // 收藏功能
+    let favorites = JSON.parse(localStorage.getItem('aitools-favs') || '[]');
+    function saveFavs() { localStorage.setItem('aitools-favs', JSON.stringify(favorites)); updateFavCount(); }
+    function toggleFav(toolId) {
+        var idx = favorites.indexOf(toolId); if (idx >= 0) favorites.splice(idx, 1); else favorites.push(toolId);
+        saveFavs(); renderTools();
+    }
+    function showFavorites() {
+        showFavOnly = !showFavOnly;
+        document.getElementById('favFilterBtn').classList.toggle('active', showFavOnly);
+        activeCategory = 'all'; document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('.category-tab[data-category="all"]').classList.add('active');
+        renderTools();
+    }
+    function updateFavCount() { document.getElementById('favCount').textContent = favorites.length; }
+    function setSort(mode) { sortMode = mode; document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active')); event.target.classList.add('active'); renderTools(); }
+    
+    // 深色模式
+    function toggleDark() {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('aitools-dark', document.documentElement.classList.contains('dark'));
+    }
+    if (localStorage.getItem('aitools-dark') === 'true') { document.documentElement.classList.add('dark'); }
+    updateFavCount();
+
+    // 热门推荐
+function renderFeatured() {
+    var featured = tools.filter(function(t) { return [1,9,3,12].indexOf(t.id) >= 0; });
+    document.getElementById('featuredGrid').innerHTML = featured.map(function(tool) {
+        return '<a href="#tools" onclick="searchInput.value=\'' + tool.name + '\';renderTools();window.scrollTo(0,500)" class="block rounded-xl p-3 no-underline hover:shadow-md transition" style="background:var(--card);border:1px solid var(--border)">' +
+            '<div class="text-lg">' + getCategoryEmoji(tool.category) + '</div>' +
+            '<div class="text-sm font-semibold truncate" style="color:var(--text)">' + tool.name + '</div>' +
+            '<div class="text-xs mt-1 truncate" style="color:var(--text2)">' + tool.desc.substring(0,25) + '</div></a>';
+    }).join('');
+}
+renderFeatured();
+
+function renderTools() {
+        var lang = langData[currentLang];
+        var currentTools = currentLang === 'zh' ? tools : tools.map(function(t) {
+            var e = enTools[t.name]; return e ? { name: e[0], desc: e[1], category: t.category, url: t.url, affiliate: t.affiliate, badge: t.badge, id: t.id } : t;
+        });
+        var filtered = currentTools.filter(function(tool) {
+            if (showFavOnly && favorites.indexOf(tool.id) < 0) return false;
+            var mc = activeCategory === 'all' || tool.category === activeCategory;
+            var q = searchQuery.trim().toLowerCase();
+            var ms = !q || tool.name.toLowerCase().includes(q) || tool.desc.toLowerCase().includes(q) || tool.category.includes(q);
+            return mc && ms;
+        });
+        // 排序
+        if (sortMode === 'name') filtered.sort(function(a, b) { return a.name.localeCompare(b.name); });
+        else if (sortMode === 'newest') filtered.sort(function(a, b) { return parseInt(b.id) - parseInt(a.id); });
+        
+        if (filtered.length === 0) { grid.innerHTML = ''; noResults.classList.remove('hidden'); return; }
+        noResults.classList.add('hidden');
+        grid.innerHTML = filtered.map(function(tool) {
+            var isFav = favorites.indexOf(tool.id) >= 0;
+            var badge = currentLang === 'zh' ? (tool.badge || '') : (badgeEn[tool.badge] || tool.badge || '');
+            return '<div class="tool-card bg-white rounded-xl border border-gray-100 p-5 flex flex-col relative" style="background:var(--card);border-color:var(--border)">' +
+                '<button class="btn-fav ' + (isFav ? 'active' : '') + ' absolute top-3 left-3 text-lg bg-transparent border-0" onclick="toggleFav(' + tool.id + ')" title="收藏">' + (isFav ? '❤️' : '🤍') + '</button>' +
+                (badge ? '<span class="absolute top-3 right-3 text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">' + badge + '</span>' : '') +
+                '<div class="text-2xl mb-2">' + getCategoryEmoji(tool.category) + '</div>' +
+                '<h3 class="text-base font-semibold mb-1" style="color:var(--text)">' + tool.name + '</h3>' +
+                '<p class="text-sm leading-relaxed flex-1 mb-4" style="color:var(--text2)">' + tool.desc + '</p>' +
+                '<div class="flex gap-2 mt-auto">' +
+                '<a href="' + tool.url + '" target="_blank" rel="noopener noreferrer" class="flex-1 text-center text-sm py-2 rounded-lg hover:opacity-80 transition" style="background:var(--btn);color:var(--text)">' + lang.btnVisit + '</a>' +
+                '<a href="' + tool.affiliate + '" target="_blank" rel="nofollow sponsored noopener noreferrer" class="flex-1 text-center text-sm bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition no-underline">🔗 ' + lang.btnLearn + '</a>' +
+                '</div></div>';
+        }).join('');
+    }
+
+function getCategoryEmoji(category) {
+const map = {
+writing: '✍️',
+image: '🎨',
+video: '🎬',
+audio: '🎵',
+code: '💻',
+design: '🎯',
+productivity: '⚡'
+};
+map.community = '🌐';
+return map[category] || '🔧';
+}
+
+// ---- 事件绑定 ----
+categoryTabs.forEach(tab => {
+tab.addEventListener('click', () => {
+categoryTabs.forEach(t => t.classList.remove('active'));
+tab.classList.add('active');
+activeCategory = tab.dataset.category;
+renderTools();
+});
+});
+searchInput.addEventListener('input', () => {
+searchQuery = searchInput.value;
+renderTools();
+});
+
+// 初始渲染 - 移到文件末尾
+
+
+// ---- 回到顶部 ----
+window.addEventListener('scroll', () => {
+const btn = document.getElementById('back-to-top');
+if (window.scrollY > 400) {
+btn.classList.add('visible');
+} else {
+btn.classList.remove('visible');
+}
+});
+
+// ---- 多语言 i18n ----
+// 自动检测浏览器语言：中文浏览器显示中文，外国浏览器显示英文
+var userLang = (navigator.language || navigator.browserLanguage || '').toLowerCase();
+var currentLang = userLang.startsWith('zh') ? 'zh' : 'en';
+
+var langData = {
+zh: {
+siteName: 'AI 工具导航',
+navTools: '工具列表', navAbout: '关于', navSubmit: '提交工具',
+heroTitle: '发现最好用的 <span class="text-yellow-300">AI 工具</span>',
+heroDesc: '精选国内外最热门的人工智能工具 — 写作、绘图、视频、代码、音频，帮你提升 10 倍工作效率',
+searchPlaceholder: '搜索工具名称或关键词...',
+catAll: '🏠 全部', catWriting: '✍️ 写作', catImage: '🎨 图像', catVideo: '🎬 视频', catAudio: '🎵 音频', catCode: '💻 代码', catDesign: '🎯 设计', catProductivity: '⚡ 效率',
+catCommunity: '🌐 AI 社区',
+noResults: '没有找到匹配的工具，换个关键词试试',
+footerDesc: '精选最实用的 AI 工具，帮你提升工作效率。本站部分链接为 affiliate 链接，你无需额外付费，我们会获得少量佣金。',
+footerQuickLinks: '快速链接', footerHome: '首页', footerAbout: '关于本站', footerSubmit: '提交工具', footerPrivacy: '隐私政策',
+footerMoneyTitle: '赚钱说明',
+footerMoney1: '🔗 Affiliate — 通过推荐链接注册，我们获得佣金',
+footerMoney2: '📢 广告 — Google AdSense 展示广告',
+footerMoney3: '💡 投稿 — 工具方付费推广',
+btnVisit: '访问官网 →', btnLearn: '了解更多'
+},
+en: {
+siteName: 'AI Tools Nav',
+navTools: 'Tools', navAbout: 'About', navSubmit: 'Submit Tool',
+heroTitle: 'Discover the Best <span class="text-yellow-300">AI Tools</span>',
+heroDesc: 'Curated collection of the hottest AI tools — writing, image, video, code, audio & more. Boost your productivity 10x.',
+searchPlaceholder: 'Search tools by name or keyword...',
+catAll: '🏠 All', catWriting: '✍️ Writing', catImage: '🎨 Image', catVideo: '🎬 Video', catAudio: '🎵 Audio', catCode: '💻 Code', catDesign: '🎯 Design', catProductivity: '⚡ Productivity',
+catCommunity: '🌐 Community',
+noResults: 'No tools found. Try a different keyword.',
+footerDesc: 'Best curated AI tools to boost your productivity. Some links are affiliate links.',
+footerQuickLinks: 'Quick Links', footerHome: 'Home', footerAbout: 'About', footerSubmit: 'Submit Tool', footerPrivacy: 'Privacy',
+footerMoneyTitle: 'Monetization',
+footerMoney1: '🔗 Affiliate — earn commission via referrals',
+footerMoney2: '📢 Ads — Google AdSense',
+footerMoney3: '💡 Sponsored — paid promotions',
+btnVisit: 'Visit →', btnLearn: 'Learn More'
+}
+};
+
+// English tool names & descriptions
+var enTools = {
+'ChatGPT': ['ChatGPT', 'AI chatbot for writing, coding, brainstorming & more'],
+'Jasper AI': ['Jasper AI', 'AI marketing copy generator with 50+ templates'],
+'Claude': ['Claude', 'Anthropic AI for long-form analysis & reports'],
+'Notion AI': ['Notion AI', 'AI writing & summarization in your workspace'],
+'Writesonic': ['Writesonic', 'Multi-language AI writing with SEO optimization'],
+'Grammarly': ['Grammarly', 'AI English writing assistant for grammar & tone'],
+'Rytr': ['Rytr', 'Budget-friendly AI writing in 30+ languages'],
+'Copy.ai': ['Copy.ai', 'Fast AI marketing copy generator'],
+'Midjourney': ['Midjourney', 'Top-tier AI art generator for creators'],
+'DALL·E 3': ['DALL·E 3', 'OpenAI image generator in ChatGPT'],
+'Stable Diffusion': ['Stable Diffusion', 'Open-source AI image generator, free locally'],
+'Canva AI': ['Canva AI', 'AI-powered online design tool'],
+'Leonardo AI': ['Leonardo AI', 'AI game asset generator'],
+'Clipdrop': ['Clipdrop', 'AI background removal & photo editing'],
+'GitHub Copilot': ['GitHub Copilot', 'AI code completion in VS Code'],
+'Cursor': ['Cursor', 'AI-first code editor with chat interface'],
+'Tabnine': ['Tabnine', 'Privacy-focused AI code completion'],
+'Replit AI': ['Replit AI', 'Browser-based IDE with AI assistant'],
+'ElevenLabs': ['ElevenLabs', 'Ultra-realistic AI voice synthesis'],
+'Murf AI': ['Murf AI', 'Commercial AI voiceover for videos & ads'],
+'Descript': ['Descript', 'AI audio/video editor like a doc'],
+'Runway Gen-3': ['Runway Gen-3', 'AI video generation & editing'],
+'Pika Labs': ['Pika Labs', 'Easy AI video generation tool'],
+'HeyGen': ['HeyGen', 'AI digital human video generator'],
+'Figma AI': ['Figma AI', 'AI-powered UI design in Figma'],
+'Uizard': ['Uizard', 'Turn sketches into UI designs with AI'],
+'Remove.bg': ['Remove.bg', 'AI background removal tool'],
+'Otter.ai': ['Otter.ai', 'AI meeting transcription & summarization'],
+'Mem.ai': ['Mem.ai', 'AI-powered smart note-taking'],
+'Perplexity AI': ['Perplexity AI', 'AI search engine with citations'],
+'Gamma': ['Gamma', 'AI presentation generator'],
+'Tome': ['Tome', 'AI storytelling for presentations'],
+'QuillBot': ['QuillBot', 'AI paraphrasing & grammar tool'],
+'Sudowrite': ['Sudowrite', 'AI fiction writing assistant'],
+'Adobe Firefly': ['Adobe Firefly', 'Adobe AI image generator, commercial safe'],
+'Ideogram': ['Ideogram', 'AI image gen with best text rendering'],
+'Windsurf': ['Windsurf', 'Next-gen AI code editor'],
+'Claude Code': ['Claude Code', 'Anthropic AI coding assistant'],
+'Suno AI': ['Suno AI', 'AI music generation from text'],
+'AIVA': ['AIVA', 'AI composition for classical & film music'],
+'Sora': ['Sora', 'OpenAI text-to-video model'],
+'CapCut': ['CapCut', 'Free AI video editor by ByteDance'],
+'Looka': ['Looka', 'AI logo design generator'],
+'Magician (Figma)': ['Magician', 'Figma AI plugin for icons & copy'],
+'Motion': ['Motion', 'AI project management & scheduling'],
+'Reclaim AI': ['Reclaim AI', 'AI calendar & habit assistant'],
+'Google Gemini': ['Google Gemini', 'Google multimodal AI, free to use'],
+'Poe': ['Poe', 'Multi-model AI platform with ChatGPT, Claude & Gemini'],
+'DeepL': ['DeepL', 'Most accurate AI translation tool supporting 30+ languages'],
+'Frase': ['Frase', 'AI content optimization & SEO writing tool'],
+'Playground AI': ['Playground AI', 'Online AI image editor with text-to-image & inpainting'],
+'Lexica': ['Lexica', 'Stable Diffusion search engine & image generator'],
+'Amazon Q': ['Amazon Q', 'AWS enterprise AI coding assistant with deep AWS integration'],
+'Sourcegraph Cody': ['Sourcegraph Cody', 'AI code search & understanding across your entire codebase'],
+'Krisp': ['Krisp', 'AI noise cancellation for crystal-clear calls'],
+'Synthesia': ['Synthesia', 'AI digital human video platform with 120+ languages'],
+'InVideo': ['InVideo', 'AI video editor that turns text into videos'],
+'Visily': ['Visily', 'AI product design tool, screenshots to UI designs'],
+'Fireflies': ['Fireflies', 'AI meeting assistant that records, transcribes & summarizes'],
+'Timely': ['Timely', 'AI time tracking that auto-records your work hours'],
+'Bardeen': ['Bardeen', 'AI automation — create workflows with a single sentence'],
+'Luma AI': ['Luma AI', 'AI 3D capture — turn phone photos into 3D models'],
+'V0 by Vercel': ['V0 by Vercel', 'AI frontend generator — text-to-React/Tailwind UI'],
+'Bolt.new': ['Bolt.new', 'AI fullstack app builder in your browser'],
+'Hugging Face': ['Hugging Face', 'Largest AI model community — the GitHub for ML'],
+'Udio': ['Udio', 'AI music generator by ex-DeepMind founders'],
+'Lovable': ['Lovable', 'AI app builder — describe in natural language, get a web app'],
+'Kling AI': ['Kling AI', 'AI video generator by Kuaishou — up to 2 minutes'],
+'Hailuo AI': ['Hailuo AI', 'AI video generator by MiniMax — text to video'],
+'Cursor AI': ['Cursor AI', 'AI code editor with multi-model chat & VSCode integration'],
+'Character AI': ['Character AI', 'AI character chat platform — talk with any AI persona'],
+'You.com': ['You.com', 'AI search engine with ChatGPT, Claude & Gemini built-in'],
+'Taskade': ['Taskade', 'AI task management & team collaboration workspace'],
+'Beautiful.ai': ['Beautiful.ai', 'AI presentation generator with smart auto-layout'],
+'Consensus': ['Consensus', 'AI academic search — find answers directly from papers'],
+'ChatPDF': ['ChatPDF', 'Chat with PDFs — ask questions, get summaries instantly'],
+'Julius AI': ['Julius AI', 'AI data analyst — upload data, chat, get charts'],
+'Browse AI': ['Browse AI', 'AI web scraping — extract data from any website, no code'],
+'Podcastle': ['Podcastle', 'AI podcast studio — record, edit, transcribe all-in-one'],
+'Speechify': ['Speechify', 'AI text-to-speech with celebrity voices & multiple languages'],
+'Jenni AI': ['Jenni AI', 'AI academic writing assistant with auto-citations'],
+'TLDraw': ['TLDraw', 'AI whiteboard — sketch to convert into beautiful diagrams'],
+'Make': ['Make', 'Powerful automation platform — visual workflow builder'],
+'Miro AI': ['Miro AI', 'AI collaborative whiteboard — generate mind maps & diagrams'],
+'NaturalReader': ['NaturalReader', 'AI natural voice reader supporting 20+ languages'],
+'Monica AI': ['Monica AI', 'AI personal assistant Chrome extension with ChatGPT & Claude'],
+'Harpa AI': ['Harpa AI', 'Browser AI assistant for summarizing, extracting & generating'],
+'Merlin AI': ['Merlin AI', 'One-click ChatGPT Chrome extension for any webpage'],
+'SciSpace': ['SciSpace', 'AI research paper assistant — explains & extracts key concepts'],
+'HyperWrite': ['HyperWrite', 'AI writing assistant that adapts to your style'],
+'Deepl Write': ['Deepl Write', 'AI writing polish by Deepl — multilingual optimization'],
+'Wordtune': ['Wordtune', 'AI paraphrasing — multiple ways to say the same thing'],
+'DreamStudio': ['DreamStudio', 'Official Stable Diffusion generator — no install needed'],
+'Fotor AI': ['Fotor AI', 'All-in-one AI image tool — expand, erase, replace, enhance'],
+'Pixlr AI': ['Pixlr AI', 'Free online AI image editor with generation & cutout'],
+'Lensa AI': ['Lensa AI', 'AI selfie enhancer — pro headshots & artistic portraits'],
+'Deep Dream': ['Deep Dream', 'Google\'s early AI art generator — trippy dreamscapes'],
+'Skybox AI': ['Skybox AI', 'AI 360° skybox generator for games & VR'],
+'Vidnoz AI': ['Vidnoz AI', 'Free AI digital human video — 300+ avatars'],
+'Fliki AI': ['Fliki AI', 'Text-to-video for social media'],'Pika Art': ['Pika Art','Easy AI video generation & editing'],'Haiper AI': ['Haiper AI','AI video by ex-DeepMind team'],'Opus Clip': ['Opus Clip','AI long-to-short video clip extractor'],'Wisecut': ['Wisecut','Auto video editor with smart silence removal'],'D-ID': ['D-ID','Create talking avatars from photos'],'Deepbrain AI': ['Deepbrain AI','AI virtual human videos in 80+ languages'],'Colossyan': ['Colossyan','Enterprise AI video for training & marketing'],'Elai.io': ['Elai.io','Digital human video creator, no camera needed'],'Rask AI': ['Rask AI','AI video translator for 130+ languages'],'Lalal.ai': ['Lalal.ai','AI vocal & instrumental separator'],'Voice.ai': ['Voice.ai','Real-time AI voice changer for Discord & Zoom'],'Resemble AI': ['Resemble AI','Enterprise AI voice cloning & TTS'],'WellSaid Labs': ['WellSaid Labs','Studio-quality AI voiceover platform'],'PlayHT': ['PlayHT','Ultra-realistic AI text-to-speech'],'Listnr AI': ['Listnr AI','AI podcast voice generator with distribution'],'Cleanvoice AI': ['Cleanvoice AI','Auto-clean filler words & noise from audio'],'Adobe Podcast': ['Adobe Podcast','AI podcast audio enhancer by Adobe'],'Beatoven AI': ['Beatoven AI','AI royalty-free background music for videos'],'Soundraw': ['Soundraw','AI music generator with custom mood & style'],'Codeium': ['Codeium','Free AI code completion for 70+ editors'],'Phind': ['Phind','AI search engine for developers'],'Continue': ['Continue','Open-source AI code assistant with any LLM'],'Mutable AI': ['Mutable AI','AI code refactoring & auto-docs'],'Civitai': ['Civitai','Largest AI art model community — download SD/LoRAs'],'PromptBase': ['PromptBase','AI prompt marketplace — buy/sell AI art prompts'],'OpenArt': ['OpenArt','AI art community & editor with 20+ models'],'NightCafe': ['NightCafe','AI art generator & community with daily free credits'],'Replicate': ['Replicate','Deploy thousands of open-source AI models in one click'],'Hugging Face Spaces': ['Hugging Face Spaces','Free AI app & demo hosting platform'],'Artbreeder': ['Artbreeder','Mix genes to create unique AI artwork'],'Krea AI': ['Krea AI','Real-time AI art canvas & artist community'],'Freepik AI': ['Freepik AI','AI image generator & stock library with Pikaso'],'Stockimg AI': ['Stockimg AI','AI asset generator — logos, posters, wallpapers'],'RunDiffusion': ['RunDiffusion','Cloud SD with 100+ preloaded models'],'Genmo AI': ['Genmo AI','AI video creation community'],'Reddit r/StableDiffusion': ['r/StableDiffusion','Largest SD community — prompts, models, art'],'Tensor Art': ['Tensor Art','Asia AI art community with SD online generation'],'SeaArt AI': ['SeaArt AI','AI art community with model library & prompt square'],'LiblibAI': ['LiblibAI','Largest Chinese SD model sharing community'],'Shakker AI': ['Shakker AI','AI image model sharing & online generation community'],'Playground Community': ['Playground Community','Official Playground AI art community feed'],'Maze Guru': ['Maze Guru','AI art inspiration — discover Midjourney/DALL·E/SD works'],'Chichi-pui': ['Chichi-pui','Japanese AI illustration community'],'PromptHero': ['PromptHero','Largest AI prompt search engine for Midjourney & SD'],'Midjourney Showcase': ['Midjourney Showcase','Official Midjourney community art showcase']
+};
+
+var badgeEn = {'🔥 热门':'🔥 Popular','💰 佣金高':'💰 High Commission','🆕 新工具':'🆕 New','💸 便宜':'💸 Cheap','🎓 学术':'🎓 Academic','📖 小说':'📖 Fiction','⭐ 商用':'⭐ Commercial','🆕 热门':'🆕 Hot','🔥 期待':'🔥 Coming','🆓 免费':'🆓 Free','🎨 Logo':'🎨 Logo','🔌 插件':'🔌 Plugin','📅 排期':'📅 Schedule','📆 日历':'📆 Calendar','🎵 音乐':'🎵 Music','🎼 作曲':'🎼 Composition','🌍 翻译':'🌍 Translation','🔍 SEO':'🔍 SEO','☁️ AWS':'☁️ AWS','🔍 搜索':'🔍 Search','🔇 降噪':'🔇 Noise Cancel','👤 数字人':'👤 Avatar','🎬 剪辑':'🎬 Editing','📱 UI':'📱 UI Design','📋 会议':'📋 Meetings','⏱️ 时间':'⏱️ Time','🤖 自动化':'🤖 Automation','🆕 3D':'🆕 3D','🔥 热门':'🔥 Popular','⚡ 全栈':'⚡ Fullstack','🆓 开源':'🆓 Open Source','🎵 音乐':'🎵 Music','🚀 快速':'🚀 Fast','🆕 新工具':'🆕 New'};
+
+function applyLang() {
+    var lang = langData[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (lang[key]) {
+            if (el.tagName === 'INPUT') { el.placeholder = lang[key]; }
+            else { el.innerHTML = lang[key]; }
+        }
+    });
+    document.getElementById('siteName').textContent = lang.siteName;
+    renderTools();
+}
+
+function toggleLang() {
+currentLang = currentLang === 'zh' ? 'en' : 'zh';
+document.getElementById('langSwitch').textContent = currentLang === 'zh' ? '🌐 EN' : '🌐 中';
+applyLang();
+}
+
+// 社交分享
+function sharePage(platform) {
+var url = 'https://ai01.fun'; var text = 'AI Tools Nav - Discover 60 best AI tools';
+var shareUrls = { twitter: 'https://twitter.com/intent/tweet?url='+url+'&text='+text, facebook: 'https://www.facebook.com/sharer/sharer.php?u='+url };
+window.open(shareUrls[platform]||'','_blank');
+}
+function copyLink() { navigator.clipboard.writeText('https://ai01.fun'); alert('链接已复制！'); }
+
+// 访问量统计
+var visits = parseInt(localStorage.getItem('aitools-visits')||'0'); visits++; localStorage.setItem('aitools-visits', visits);
+console.log('📊 Total visits: ' + visits + ' | Today: ' + new Date().toLocaleDateString());
+
+// 页面加载时根据浏览器语言自动切换
+if (currentLang === 'en') { applyLang(); }
+renderFeatured();
+renderTools();
+</script>
+
+<!-- Google AdSense 脚本 → 取消注释并替换你的 client ID -->
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d9f93ee2cff732a0493c7eff3131ea08";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>
